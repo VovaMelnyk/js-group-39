@@ -1,27 +1,26 @@
 /**
- * Отображение времени (if...else)
+ * Индекс массы тела
  *
- * Напиши скрипт для отображения часов и минут в консоли браузера
- * в виде строки формата "14 ч. 26 мин.". Если значение переменной
- * `minutes` равно `0`, то выводи строку `"14 ч."`, без минут.
+ * Напиши функцию calcBMI(weight, height) которая рассчитывает
+ * и возвращает индекс массы тела человека. Для этого необходимо
+ * разделить вес в киллограммах на квадрат высоты человека в метрах.
+ *
+ * Вес и высота будут специально переданы как строки.
+ * Нецелые числа могут быть заданы в виде "24.7" или "24,7",
+ * то есть в качестве разделителя дробной части может быть запятая.
+ *
+ * Индекс массы тела необходимо округлить до одной цифры после запятой.
  */
 
-// const hours = 28;
-// const minutes = 14;
-// if (minutes === 0) {
-//   console.log(`${hours} ч.`);
-// } else {
-//   console.log(`${hours} ч. ${minutes} мин.`);
-// }
-
-function logTime(hours, minutes) {
-  if (minutes === 0) {
-    return `${hours} ч.`;
-  } else {
-    return `${hours} ч. ${minutes} мин.`;
-  }
+function calcBMI(weight, height) {
+  const numericWeight = Number(weight.replace(',', '.'));
+  const numericHeight = Number(height.replace(',', '.'));
+  let bmi = numericWeight / numericHeight ** 2;
+  bmi = bmi.toFixed(1);
+  bmi = Number(bmi);
+  return bmi;
 }
 
-console.log(logTime(28, 14));
-
-console.log(logTime(28, 0));
+console.log(calcBMI('88,3', '1.75'));
+console.log(calcBMI('68,3', '1.65'));
+console.log(calcBMI('118,3', '1.95'));

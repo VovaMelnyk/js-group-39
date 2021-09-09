@@ -1,22 +1,20 @@
 /**
- * Дедлайн сдачи проекта (if...else)
+ * Форматирование времени
  *
- * Напиши скрипт для отображения времени дедлайна сдачи проекта. Используй конструкцию `if...else`.
- *
- * - Eсли до дедлайна 0 дней - выведи строку `"Сегодня"`
- * - Eсли до дедлайна 1 день - выведи строку `"Завтра"`
- * - Eсли до дедлайна 2 дня - выведи строку `"Послезавтра"`
- * - Eсли до дедлайна 3+ дней - выведи строку `"Дата в будущем"`
+ * Напиши функцию `formatTime(minutes)` которая переведёт значение `minutes`
+ * (количество минут) в строку в формате часов и минут `HH:MM`.
  */
 
-const daysUntilDeadline = 2;
-
-if (daysUntilDeadline === 0) {
-  console.log('Сегодня');
-} else if (daysUntilDeadline === 1) {
-  console.log('Завтра');
-} else if (daysUntilDeadline === 2) {
-  console.log('Послезавтра');
-} else {
-  console.log('Дата в будущем');
+function addLeadingZero(value) {
+  return String(value).padStart(2, 0);
 }
+
+function formatTime(totalMinutes) {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return `${addLeadingZero(hours)}:${addLeadingZero(minutes)}`;
+}
+
+console.log(formatTime(70)); // "01:10"
+console.log(formatTime(450)); // "07:30"
+console.log(formatTime(1441)); // "24:01"

@@ -1,32 +1,18 @@
 /**
- * Вложенные ветвления
+ * Площадь прямоугольника
  *
- * Напиши скрипт, который сравнивает числа в переменных `a` и `b`.
- * Если оба значения больше `100`, то выведи в консоль максимальное из них.
- * В противном случае в консоли должна быть сумма значения `b` и числа 512.
+ * Напиши функцию `getRectArea(dimensions)` для вычисления
+ * площади прямоугольника со сторонами, значения которых
+ * будут переданы в параметр `dimensions` в виде строки.
+ * Значения гарантированно разделены пробелом.
  */
 
-const a = 120;
-const b = 180;
+function getRectArea(dimensions) {
+  const values = dimensions.split(' ');
+  const area = values[0] * values[1];
+  return area;
+}
 
-// if (a > 100 && b > 100) {
-//   if (a > b) {
-//     console.log(a);
-//   } else {
-//     console.log(b);
-//   }
-// } else {
-//   console.log(b + 512);
-// }
-
-// if (a > 100 && b > 100) {
-//   console.log(a > b ? a : b);
-// } else {
-//   console.log(b + 512);
-// }
-
-// if (a > 100 && b > 100) {
-//   console.log(Math.max(a, b));
-// } else {
-//   console.log(b + 512);
-// }
+console.log(getRectArea('8 11'));
+console.log(getRectArea('15 5'));
+console.log(getRectArea('12 3'));

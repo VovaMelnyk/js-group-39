@@ -1,31 +1,14 @@
 /**
- * Ветвеления
+ * Меньшее из чисел
  *
- * Напиши скрипт, который выводит в консоль строку "Это положительное число",
- * если в prompt пользователь ввел число больше нуля. Если был введен ноль,
- * выводи в консоль строку `"Это ноль"`. Если передали отрицательное число,
- * в консоли должна быть строка `"Это отрицательное число"`.
+ * Напиши функцию `min(a,b)`, которая возвращает меньшее из чисел `a` и `b`.
  */
 
-let userInput = prompt('Введите число');
-userInput = Number(userInput);
-
-if (userInput > 0) {
-  console.log('Это положительное число');
-} else if (userInput === 0) {
-  console.log('Это ноль');
-} else {
-  console.log('Это отрицательное число');
+function min(a, b) {
+  // return a < b ? a : b;
+  return Math.min(a, b);
 }
 
-// function logMessage(number) {
-//   if (number > 0) {
-//     console.log('Это положительное число');
-//   } else if (number === 0) {
-//     console.log('Это ноль');
-//   } else {
-//     console.log('Это отрицательное число');
-//   }
-// }
-
-// logMessage(userInput);
+console.log(min(2, 5)); // 2
+console.log(min(3, -1)); // -1
+console.log(min(1, 1)); // 1

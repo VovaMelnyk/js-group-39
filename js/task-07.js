@@ -1,22 +1,20 @@
 /**
- * if...else и логические операторы
+ * Среднее значение
  *
- * Напиши скрипт который будет выводить в консоль браузера строку в зависимости от значения переменной
- * `hours`.
+ * Напишите функцию `calAverage()` которая принимает произвольное
+ * кол-во аргументов и возвращает их среднее значение.
  *
- * Если значение переменной `hours`:
- *
- * - меньше `17`, выводи строку `"Pending"`
- * - больше либо равно `17` и меньше либо равно 24, выводи строку `"Expires"`
- * - больше `24` , выводи строку `"Overdue"`
+ * Все аругменты будут только числами.
  */
 
-const hours = 40;
-
-if (hours < 17) {
-  console.log('Pending');
-} else if (hours >= 17 && hours <= 24) {
-  console.log('Expires');
-} else {
-  console.log('Overdue');
+function calAverage(...args) {
+  let total = 0;
+  for (let i = 0; i < args.length; i++) {
+    total += args[i];
+  }
+  return total / args.length;
 }
+
+console.log(calAverage(1, 2, 3, 4)); // 2.5
+console.log(calAverage(14, 8, 2)); // 8
+console.log(calAverage(27, 43, 2, 8, 36)); // 23.2
