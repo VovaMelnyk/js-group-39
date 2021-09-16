@@ -1,24 +1,33 @@
 /**
- * Логирование контактов
+ * Операция rest
  *
- * Напиши функцию `printContactsInfo(names, phones)` которая
- * выводит в консоль имя и телефонный номер пользователя.
- * В параметры `names` и `phones` будут переданы строки имен
- * и телефонных номеров, разделенные запятыми. Порядковый номер
- * имен и телефонов в строках указывают на соответствие.
- *
- * Количество имен и телефонов гарантированно одинаковое.
+ * Напиши функцию `transformUsername(user)` так, чтобы она возвращала
+ * новый обьект со свойством `fullName`, вместо `firstName` и `lastName`.
  */
 
-function printContactsInfo(names, phones) {
-  const nameList = names.split(',');
-  const phoneList = phones.split(',');
-  for (let i = 0; i < nameList.length; i += 1) {
-    console.log(`${nameList[i]}: ${phoneList[i]}`);
-  }
+function transformUsername({ firstName, lastName, ...otherProps }) {
+  return {
+    ...otherProps,
+    fullName: `${firstName} ${lastName}`,
+  };
 }
 
-printContactsInfo(
-  'Jacob,William,Solomon,Artemis',
-  '89001234567,89001112233,890055566377,890055566300'
+console.log(
+  transformUsername({
+    id: 1,
+    firstName: 'Jacob',
+    lastName: 'Mercer',
+    email: 'j.mercer@mail.com',
+    friendCount: 40,
+  })
+);
+
+console.log(
+  transformUsername({
+    id: 2,
+    firstName: 'Adrian',
+    lastName: 'Cross',
+    email: 'a.cross@hotmail.com',
+    friendCount: 20,
+  })
 );
