@@ -1,37 +1,26 @@
 /**
- * Деструктуризация
- *
- * Перепиши функцию так, чтобы она принимала один объект параметров,
- * вместо набора независимых аргументов.
+ * Напишите метод `calcTotalPrice(stoneName)`, который принимает название камня и
+ * рассчитывает и возвращает общую стоимость камней с таким именем, ценой и
+ * количеством из свойства `stones`.
  */
 
-function calcBMI({ weight, height }) {
-  const numericWeight = Number(weight.replace(',', '.'));
-  const numericHeight = Number(height.replace(',', '.'));
-  return Number((numericWeight / numericHeight ** 2).toFixed(1));
-}
+const chopShop = {
+  stones: [
+    { name: 'Emerald', price: 1300, quantity: 4 },
+    { name: 'Diamond', price: 2700, quantity: 3 },
+    { name: 'Sapphire', price: 1400, quantity: 7 },
+    { name: 'Ruby', price: 800, quantity: 2 },
+  ],
+  calcTotalPrice(stoneName) {
+    const stone = this.stones.find(({ name }) => name === stoneName);
+    if (stone) {
+      return stone.price * stone.quantity;
+    }
+    alert('Такого камня нет, извините');
+  },
+};
 
-// Было
-// console.log(calcBMI('88,3', '1.75'));
-// console.log(calcBMI('68,3', '1.65'));
-// console.log(calcBMI('118,3', '1.95'));
-
-// Ожидается
-console.log(
-  calcBMI({
-    weight: '88,3',
-    height: '1.75',
-  })
-);
-console.log(
-  calcBMI({
-    weight: '68,3',
-    height: '1.65',
-  })
-);
-console.log(
-  calcBMI({
-    weight: '118,3',
-    height: '1.95',
-  })
-);
+console.log(chopShop.calcTotalPrice('Emerald')); // 5200
+console.log(chopShop.calcTotalPrice('Diamond')); // 8100
+console.log(chopShop.calcTotalPrice('Sapphire')); // 9800
+console.log(chopShop.calcTotalPrice('Ruby')); // 1600

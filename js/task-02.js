@@ -1,26 +1,38 @@
 /**
- * Деструктуризация
- *
- * Перепиши функцию так, чтобы она принимала один объект параметров,
- * вместо набора независимых аргументов.
+ * Выполните рефакторинг методов объекта `phonebook` чтобы код заработал.
  */
 
-function printContactsInfo({ names, phones }) {
-  const nameList = names.split(',');
-  const phoneList = phones.split(',');
-  for (let i = 0; i < nameList.length; i += 1) {
-    console.log(`${nameList[i]}: ${phoneList[i]}`);
-  }
-}
+const phonebook = {
+  contacts: [],
+  add(data) {
+    const newContact = {
+      list: 'default',
+      ...data,
+      id: this.generateId(),
+      createdAt: this.getDate(),
+    };
+    this.contacts.push(newContact);
+  },
+  list() {
+    console.table(this.contacts);
+  },
+  generateId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+  },
+  getDate() {
+    return Date.now();
+  },
+};
 
-// Было
-// printContactsInfo(
-//   'Jacob,William,Solomon,Artemis',
-//   '89001234567,89001112233,890055566377,890055566300'
-// );
-
-// Ожидается
-printContactsInfo({
-  names: 'Jacob,William,Solomon,Artemis',
-  phones: '89001234567,89001112233,890055566377,890055566300',
+phonebook.add({
+  name: 'Mango',
+  email: 'mango@mail.com',
+  list: 'friends',
 });
+phonebook.list();
+
+phonebook.add({
+  name: 'Poly',
+  email: 'poly@hotmail.com',
+});
+phonebook.list();

@@ -1,39 +1,29 @@
 /**
- * Глубокая деструктуризация
- *
- * Перепиши функцию так, чтобы она принимала один объект параметров,
- * вместо набора независимых аргументов.
+ * Создайте объект `calculator` с тремя методами:
+ * - `read(a, b)`- принимает два значения и сохраняет их как свойства объекта.
+ * - `add()` - возвращает сумму сохранённых значений.
+ * - `mult()` - перемножает сохранённые значения и возвращает результат.
  */
 
-function getStockReport({ companyName, stock }) {
-  let total = 0;
-  for (const value of Object.values(stock)) {
-    total += value;
-  }
-  return `${companyName} has ${total} items in stock`;
-}
+const calculator = {
+  x: 0,
+  y: 0,
+  read(a, b) {
+    this.x = a;
+    this.y = b;
+  },
+  add() {
+    return this.x + this.y;
+  },
+  mult() {
+    return this.x * this.y;
+  },
+};
 
-// Было
-// console.log(getStockReport('Cyberdyne Systems', 150, 50));
+calculator.read(5, 10);
+console.log(calculator.add());
+console.log(calculator.mult());
 
-// Ожидается
-console.log(
-  getStockReport({
-    companyName: 'Cyberdyne Systems',
-    stock: {
-      repair: 150,
-      defence: 50,
-    },
-  })
-); // "Cyberdyne Systems has 200 bots in stock"
-
-console.log(
-  getStockReport({
-    companyName: 'Babushka',
-    stock: {
-      apples: 50,
-      potato: 100,
-      eggs: 150,
-    },
-  })
-); // "Cyberdyne Systems has 200 bots in stock"
+calculator.read(15, 20);
+console.log(calculator.add());
+console.log(calculator.mult());
