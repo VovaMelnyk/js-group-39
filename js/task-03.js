@@ -1,29 +1,50 @@
 /**
- * Создайте объект `calculator` с тремя методами:
- * - `read(a, b)`- принимает два значения и сохраняет их как свойства объекта.
- * - `add()` - возвращает сумму сохранённых значений.
- * - `mult()` - перемножает сохранённые значения и возвращает результат.
+ * Напиши класс `User` который создаёт объект со свойствами `login` и `email`.
+ * Объяви приватные свойства `#login` и `#email`, доступ к которым сделай через
+ * геттер и сеттер `login` и `email`.
  */
 
-const calculator = {
-  x: 0,
-  y: 0,
-  read(a, b) {
-    this.x = a;
-    this.y = b;
-  },
-  add() {
-    return this.x + this.y;
-  },
-  mult() {
-    return this.x * this.y;
-  },
-};
+class User {
+  #login;
+  #email;
 
-calculator.read(5, 10);
-console.log(calculator.add());
-console.log(calculator.mult());
+  constructor({ login, email }) {
+    this.#login = login;
+    this.#email = email;
+  }
 
-calculator.read(15, 20);
-console.log(calculator.add());
-console.log(calculator.mult());
+  set login(newLogin) {
+    if (!newLogin.includes('hack')) {
+      this.#login = newLogin;
+    }
+  }
+
+  get login() {
+    return this.#login;
+  }
+
+  set email(newEmail) {
+    if (!newEmail.endsWith('.net')) {
+      this.#email = newEmail;
+    }
+  }
+
+  get email() {
+    return this.#email;
+  }
+}
+
+const mango = new User({
+  login: 'Mango',
+  email: 'mango@dog.woof',
+});
+
+mango.login = 'get hacked son';
+mango.email = 'mysupermail@mail.net';
+console.log(mango.email);
+console.log(mango.login);
+
+mango.login = 'mangoooo';
+mango.email = 'mysupermail@mail.com';
+console.log(mango.email);
+console.log(mango.login);

@@ -1,38 +1,41 @@
 /**
- * Выполните рефакторинг методов объекта `phonebook` чтобы код заработал.
+ * Напиши класс `Storage` который создаёт объекты для управления складом товаров.
+ * При вызове будет получать один аргумент - начальный массив товаров, и записывать
+ * его в свойство `items`.
+ *
+ * Добавь методы класса:
+ * - `getItems()` - возвращает массив товаров
+ * - `addItem(item)` - получает новый товар и добавляет его к текущим
+ * - `removeItem(item)` - получает товар и, если он есть, удаляет его из текущих.
  */
 
-const phonebook = {
-  contacts: [],
-  add(data) {
-    const newContact = {
-      list: 'default',
-      ...data,
-      id: this.generateId(),
-      createdAt: this.getDate(),
-    };
-    this.contacts.push(newContact);
-  },
-  list() {
-    console.table(this.contacts);
-  },
-  generateId() {
-    return '_' + Math.random().toString(36).substr(2, 9);
-  },
-  getDate() {
-    return Date.now();
-  },
-};
+class Storage {
+  constructor(initialValue = []) {
+    this.items = initialValue;
+  }
 
-phonebook.add({
-  name: 'Mango',
-  email: 'mango@mail.com',
-  list: 'friends',
-});
-phonebook.list();
+  getItems() {
+    return this.items;
+  }
 
-phonebook.add({
-  name: 'Poly',
-  email: 'poly@hotmail.com',
-});
-phonebook.list();
+  addItem(item) {
+    this.items.push(item);
+  }
+
+  removeItem(itemName) {
+    const item = this.items.find(el => el === itemName);
+    if (item) {
+      this.items = this.items.filter(item => item !== itemName);
+    }
+  }
+}
+
+const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
+
+console.table(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑' ]
+
+storage.addItem('🍌');
+console.table(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+
+storage.removeItem('🍋');
+console.table(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
