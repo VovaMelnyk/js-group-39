@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="sass/filters.scss" />
+    <script src="filters.js" type="module"></script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="index.html">На главную</a></li>
+    </ul>
+
+    <form class="filter-form">
+      <label>
+        Цвет
+        <select name="color">
+          <option value="red">Красный</option>
+          <option value="green">Зеленый</option>
+          <option value="blue">Синий</option>
+        </select>
+      </label>
+
+      <label>
+        Размер
+        <select name="size">
+          <option value="sm">Маленький</option>
+          <option value="md">Средний</option>
+          <option value="xl">Большой</option>
+        </select>
+      </label>
+
+      <label>
+        Материал
+        <select name="material">
+          <option value="steel">Сталь</option>
+          <option value="wood">Дерево</option>
+          <option value="plastic">Пластик</option>
+        </select>
+      </label>
+
+      <button type="submit">Применить</button>
+      <button type="reset">Сбросить</button>
+    </form>
+  </body>
+</html>

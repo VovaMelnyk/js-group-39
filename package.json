@@ -1,0 +1,29 @@
+{
+  "name": "js-group-39",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel src/*.html -p 4000 --open",
+    "build": "parcel build src/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VovaMelnyk/js-group-39.git"
+  },
+  "keywords": [],
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VovaMelnyk/js-group-39/issues"
+  },
+  "homepage": "https://github.com/VovaMelnyk/js-group-39#readme",
+  "browserslist": "> 0.5%, last 20 versions, not dead",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0",
+    "parcel": "^2.0.0"
+  },
+  "dependencies": {
+    "simplelightbox": "^2.9.0",
+    "typed.js": "^2.0.12"
+  }
+}
