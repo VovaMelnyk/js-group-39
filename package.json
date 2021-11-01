@@ -23,7 +23,6 @@
     "parcel": "^2.0.0"
   },
   "dependencies": {
-    "simplelightbox": "^2.9.0",
-    "typed.js": "^2.0.12"
+    "date-fns": "^2.25.0"
   }
 }
