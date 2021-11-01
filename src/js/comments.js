@@ -1,19 +1,19 @@
-// import { format } from 'date-fns';
+import { formateDatetime } from './helpers/formateDatetime';
 import comments from '../comments.json';
 
 document.querySelector('.comments').innerHTML = prepareCommentsMarkup();
 
 function prepareCommentsMarkup() {
   return comments
-    .map(comment => {
+    .map(({ author, createdAt, content }) => {
       return `<div class="comment">
       <header>
-        <b>Автор</b> posted
+        <b>${author}</b> posted
         <time datetime="">
-          <i>Время</i>
+          <i>${formateDatetime(createdAt)}</i>
         </time>
       </header>
-      <p>Контент</p>
+      <p>${content}</p>
     </div>`;
     })
     .join('');

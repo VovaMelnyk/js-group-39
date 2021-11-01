@@ -1,20 +1,17 @@
-// import { differenceInCalendarYears, getDate, getMonth } from 'date-fns';
+import { calculateAge } from './helpers/calculateAge';
+import { isBirthday } from './helpers/isBirthday';
 import employees from '../employees.json';
 
 document.querySelector('tbody').innerHTML = prepareTableRowsMarkup();
 
 function prepareTableRowsMarkup() {
   return employees
-    .map(employee => {
+    .map(({ username, birthDate }) => {
       return `<tr>
-      <td>Имя</td>
-      <td>Возраст</td>
-      <td>Да/Нет</td>
+      <td>${username}</td>
+      <td>${calculateAge(birthDate)}</td>
+      <td>${isBirthday(birthDate) ? 'Yes' : 'No'}</td>
     </tr>`;
     })
     .join('');
 }
-
-function calculateAge(birthDate) {}
-
-function isBirthday(date) {}
