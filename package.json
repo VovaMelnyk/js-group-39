@@ -22,7 +22,5 @@
     "@parcel/transformer-sass": "^2.0.0",
     "parcel": "^2.0.0"
   },
-  "dependencies": {
-    "date-fns": "^2.25.0"
-  }
+  "dependencies": {}
 }
