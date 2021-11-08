@@ -22,5 +22,7 @@
     "@parcel/transformer-sass": "^2.0.0",
     "parcel": "^2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  }
 }

@@ -1,3 +1,4 @@
 # js-group-39
 
-[Библиотека date-fns](https://date-fns.org/)
+- [How to handle 404, 500 and more — using `fetch()`API in JavaScript](https://millankaul.medium.com/how-to-handle-404-500-and-more-using-fetch-api-in-javascript-f4e301925a51)
+- [Репозиторий публичных API](https://github.com/public-apis/public-apis)
