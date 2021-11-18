@@ -1,42 +1,38 @@
-import HTTPService from './services/api';
-import { LoadMoreBtn } from './loadMoreBtn';
+import axios from 'axios';
 
-const commentList = document.querySelector('.comments');
-const loadMoreBtn = new LoadMoreBtn({
-  selector: '.load-more',
-  className: 'is-hidden',
-  isHidden: true,
-  onClick() {
-    loadComments();
-  },
-});
+axios.defaults.baseURL = 'https://611560228f38520017a38499.mockapi.io/api/v1';
 
-loadComments().then(() => {
-  loadMoreBtn.show();
-});
+const getContacts = () => {
+  return axios.get(`/contacts`);
+};
 
-function loadComments() {
-  return HTTPService.getComments().then(data => {
-    renderComments(data.comments);
-    if (!data.hasNextPage) {
-      loadMoreBtn.hide();
-    }
-  });
-}
+getContacts()
+  .then(response => console.log(response.data))
+  .catch(error => console.log('AAAAAAAAAAA'));
 
-function renderComments(comments) {
-  const markup = comments
-    .map(
-      ({ author, createdAt, content }) => `
-    <article class="comment">
-      <header>
-        Posted by <b>${author}</b> on
-        <time datetime="${createdAt}">${createdAt}</time>
-      </header>
-      <p>${content}</p>
-    </article>`
-    )
-    .join('');
+const getContactById = id => {
+  return axios.get(`/contacts/${id}`);
+};
 
-  commentList.insertAdjacentHTML('beforeend', markup);
-}
+// getContactById(4);
+// getContactById(5);
+// getContactById(6);
+
+const createContact = contact => {
+  return axios.post(`/contacts`, contact);
+};
+
+// createContact({ name: 'Mango', phone: '111-22-33', email: 'mango@mail.com' });
+// createContact({ name: 'Poly', phone: '333-22-11', email: 'poly@mail.com' });
+
+const deleteContact = id => {
+  return axios.delete(`/contacts/${id}`);
+};
+
+// deleteContact(2);
+
+const updateContact = (id, update) => {
+  return axios.put(`/contacts/${id}`, update);
+};
+
+// updateContact(4, { email: 'hello@mail.com' });
